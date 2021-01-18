@@ -15,6 +15,7 @@ def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -
         # Backtracking, tentatively adding in the current node
         # Divide and conquer, if the node is not in the left tree, left tree path will remove automatically
         path.append(root)
+
         if look_for_path(root.left, node, path):
             return True
 
