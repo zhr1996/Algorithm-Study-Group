@@ -35,6 +35,9 @@ Note:
 * index_s should start from -1. Since we are ensuring each found index greater than the index_s
 
 Time complexity: O(len(words) * len(word) * log(len(s)))
+
+Tag: Moderate, if think of store index list in a hashmap and using binary search to find the index in index_list, then would be easy
+A combination of hashmap and binary search.
 '''
 
 
