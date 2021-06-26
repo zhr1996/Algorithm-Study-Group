@@ -52,4 +52,4 @@ def canBeIncreasing(nums: List[int]) -> bool:
 
 
 if __name__ == "__main__":
-    print(canBeIncreasing([1, 1]))
+    print(canBeIncreasing([1, 2]))
