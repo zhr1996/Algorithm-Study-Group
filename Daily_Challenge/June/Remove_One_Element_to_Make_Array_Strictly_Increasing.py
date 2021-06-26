@@ -18,6 +18,11 @@ Thinking
 * If one element is negative, we check if num[i+1] - num[i] + num[i+2] - num[i+1] is a positive number, and mark the quota has been used
 
 * To make it easier, make the last element of the array +int, since we are considering the last element always increasing
+
+
+Reflection
+-------------------
+* I checked the top submissions, they use two iterations, don't check the condition, but simply put the removed two arrays together, and check if it is a strictly increasing array
 '''
 from typing import List
 
@@ -26,10 +31,9 @@ def canBeIncreasing(nums: List[int]) -> bool:
     # new_arr = [0 for i in range(len(nums))]
     # new_arr[-1] = float('inf')
 
-    def check_increasing(remove_index):
+    def is_increasing(remove_index):
 
-        new_nums = nums[:]
-        new_nums.pop(remove_index)
+        new_nums = nums[:remove_index] + nums[remove_index + 1:]
 
         for i in range(len(new_nums) - 1):
 
@@ -43,7 +47,7 @@ def canBeIncreasing(nums: List[int]) -> bool:
 
             # Two choices, remove nums[i+1] or nums[i]
 
-            if check_increasing(i) or check_increasing(i+1):
+            if is_increasing(i) or is_increasing(i+1):
                 return True
             else:
                 return False
@@ -52,4 +56,4 @@ def canBeIncreasing(nums: List[int]) -> bool:
 
 
 if __name__ == "__main__":
-    print(canBeIncreasing([1, 2]))
+    print(canBeIncreasing([1, 1]))
