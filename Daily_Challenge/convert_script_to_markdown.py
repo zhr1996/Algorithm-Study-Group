@@ -2,9 +2,10 @@
 import os
 from datetime import date
 import subprocess
+import sys
 
 
-def convert_script_to_markdown(python_file, markdown_dir):
+def convert_script_to_markdown(python_file, markdown_dir="/Users/fengzhixiao/Documents/Git_Webstie/zhr1996.github.io/_posts"):
     problem_name = os.path.basename(
         python_file).replace(".py", "").replace("_", " ")
 
@@ -62,10 +63,13 @@ def convert_script_to_markdown(python_file, markdown_dir):
 
 def publish_blog():
     bash_file = "/Users/fengzhixiao/Documents/Git_Webstie/zhr1996.github.io/git_cmd.sh"
+
     subprocess.run(bash_file)
 
 
 if __name__ == "__main__":
-    # print(convert_script_to_markdown("July/Find_Leaves_of_Binary_Tree.py",
-    #       "/Users/fengzhixiao/Documents/Git_Webstie/zhr1996.github.io/_posts"))
+    python_file = sys.argv[1]
+
+    print(convert_script_to_markdown(python_file,
+          "/Users/fengzhixiao/Documents/Git_Webstie/zhr1996.github.io/_posts"))
     publish_blog()
