@@ -44,12 +44,15 @@ def convert_script_to_markdown(python_file, markdown_dir="/Users/fengzhixiao/Doc
                     comment_start = True
                 else:
                     code_start = True
+                    mark_down_array.append("\n")
+                    mark_down_array.append("```python\n")
             else:
-                if code_start:
-                    mark_down_array.append("        " + cur_line)
-                else:
-                    mark_down_array.append(cur_line)
+                # if code_start:
+                #     mark_down_array.append("        " + cur_line)
+                # else:
+                mark_down_array.append(cur_line)
             cur_line = py_file.readline()
+        mark_down_array.append("```")
 
     mark_down_file_name = date.today().strftime("%Y-%m-%d") + "-" + \
         os.path.basename(python_file).replace(".py", ".md")
@@ -71,5 +74,5 @@ if __name__ == "__main__":
     python_file = sys.argv[1]
 
     print(convert_script_to_markdown(python_file,
-          "/Users/fengzhixiao/Documents/Git_Webstie/zhr1996.github.io/_posts"))
+                                     "/Users/fengzhixiao/Documents/Git_Webstie/zhr1996.github.io/_posts"))
     publish_blog()
