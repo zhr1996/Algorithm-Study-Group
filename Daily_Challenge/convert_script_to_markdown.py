@@ -7,7 +7,7 @@ import sys
 
 def convert_script_to_markdown(python_file, markdown_dir="/Users/fengzhixiao/Documents/Git_Webstie/zhr1996.github.io/_posts"):
     problem_name = os.path.basename(
-        python_file).replace(".py", "").replace("_", " ")
+        python_file.strip()).replace(".py", "").replace("_", " ")
 
     prev_line = ""
     mark_down_array = []
