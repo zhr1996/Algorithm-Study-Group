@@ -7,7 +7,7 @@ A subsequence is a sequence that can be derived from an array by deleting some o
 
 Constraints
 -------------------
-1 <= nums.length <= 2500   
+1 <= nums.length <= 2500
 -104 <= nums[i] <= 104
 
 Thinking
@@ -27,8 +27,12 @@ Thinking
     * We could store a sorted dictionary, and find the first larger one in O(logn) (left all smaller than current)
         * But still need to compare all these LTS
     * To achieve O(nlogn), we need to change the information stored in dp array. Instead of storing the longest length, we store the smallest elements which ends a length i subsequence.
+    * For each element in array, we iterate through all possible length and compare it with dp[j-1], if it is greater than dp[j-1], then it can form a length of j increasing subsequence, so update dp[j] = a[i]
+    * since we are always keep the smallest element of length j, we should also check to only update when a[i] < dp[j]
+    *
 '''
 from typing import List
+from bisect import bisect_left
 
 
 def lengthOfLIS(nums: List[int]) -> int:
@@ -47,5 +51,27 @@ def lengthOfLIS(nums: List[int]) -> int:
     return longest_LTS_length
 
 
+# Time complexity: O(nlogn)
+# First implement according to second way. And then improve with binary search
+def lengthOfLIS_v2(nums: List[int]) -> int:
+    if len(nums) == 0:
+        return 0
+    dp = [float("inf") for x in range(len(nums) + 1)]
+    dp[0] = -float("inf")
+    for i in range(0, len(nums)):
+        # Use binary search. Here we can find the first element strictly greater than arr[i]
+        # This is strictly smaller than len(arr). It can't be greater, so we can safely update dp[j]
+        j = bisect_left(dp, nums[i])
+        dp[j] = nums[i]
+        # for j in range(1, len(nums) + 1):
+        #     if nums[i] > dp[j-1] and nums[i] < dp[j]:
+        #         dp[j] = nums[i]
+    length_of_LIS = 1
+    for i in range(1, len(nums) + 1):
+        if dp[i] < float("inf"):
+            length_of_LIS = i
+    return length_of_LIS
+
+
 if __name__ == "__main__":
-    print(lengthOfLIS([-2]))
+    print(lengthOfLIS_v2([10, 9, 2, 5, 3, 7, 101, 18]))
