@@ -7,7 +7,7 @@ A subsequence is a sequence that can be derived from an array by deleting some o
 
 Constraints
 -------------------
-1 <= nums.length <= 2500
+1 <= nums.length <= 2500\
 -104 <= nums[i] <= 104
 
 Thinking
