@@ -48,7 +48,7 @@ Thinking
     * If the number are 99% in 100
         * Besides storing 0 to 100, we also need to store the number smaller than 0 and larger than one hundred
         * Since we know the median must be in 0-100, we only need the count to find the median
-    * reference:https://www.junhaow.com/lc/problems/heap/295_find-median-from-data-stream
+    * [Follow-up reference](https://www.junhaow.com/lc/problems/heap/295_find-median-from-data-stream)
 '''
 from typing import List
 import heapq
@@ -87,7 +87,7 @@ class MedianFinder:
         else:
             return self.min_heap[0]
 
-    # Debug
+    # Debug\
     def print_heap(self):
         print(self.min_heap)
         print(self.max_heap)
