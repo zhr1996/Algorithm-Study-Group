@@ -1,4 +1,4 @@
-# Algorithms
+# Algorithm Study Group
 
 This repo has the solution for the Online Problems I have learned and solved. I originally wanted to form a group, but it turns out I am the only contributor. But I don't want to change the name so the repo is called algorithm study group. Solving leetcode is so much fun, I can't wait to get up each to put myself into one problem.
 
