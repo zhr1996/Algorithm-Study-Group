@@ -30,6 +30,7 @@ Thinking
     * Assume generating random number is O(1), we can do this in O(n), so the total complexity would be O(n * k), k is the number of calls, could work!
 
 * From my intuition, this creates a equally likely shuffle. It's like choosing balls from a bag, the sequence is completely random. So each sequence should be equal likely
+    * Also this can be proved by computing exact probablity
 '''
 from typing import List
 import random
